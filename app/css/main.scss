@@ -34,6 +34,9 @@ nav {
   li.unread {
     border-left: 4px solid color("blue", "accent-1");
   }
+  li.open {
+    @extend .z-depth-3;
+  }
 }
 
 #email {

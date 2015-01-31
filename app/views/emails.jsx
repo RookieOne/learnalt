@@ -1,50 +1,48 @@
 /** @jsx React.DOM */
 var React = require('react')
+var _ = require("underscore")
+var EmailListItem = require("./email-list-item.jsx")
+
+var emails = [{
+  unread: false,
+  subject: "Good news everyone!",
+  from: "Doctor Farnsworth",
+  previewText: "You are now worth more dead than alive! So for...",
+  open: false
+}, {
+  unread: false,
+  subject: "Good news everyone!",
+  from: "Doctor Farnsworth",
+  previewText: "You are now worth more dead than alive! So for...",
+  open: true
+}, {
+  unread: true,
+  subject: "Good news everyone!",
+  from: "Doctor Farnsworth",
+  previewText: "You are now worth more dead than alive! So for...",
+  open: false
+}, {
+  unread: true,
+  subject: "Good news everyone!",
+  from: "Doctor Farnsworth",
+  previewText: "You are now worth more dead than alive! So for...",
+  open: false
+}]
 
 module.exports = React.createClass({
+  getInitialState: function() {
+    return {
+      emails: emails
+    }
+  },
   render: function() {
+    var emails = _.map(this.state.emails, function(email) {
+      return (<EmailListItem email={email} />)
+    })
+
     return (
       <ul id="emails" className="collection with-header">
-        <li className="collection-item row valign-wrapper">
-          <div className="col s2">
-            <img src="http://placehold.it/150x150" className="circle responsive-img"></img>
-          </div>
-          <div className="col s10">
-            <div className="from">John Smith (jsmith@gmail.com)</div>
-            <div className="subject">Good news everyone!</div>
-            <div className="preview-text">You are now worth more dead than alive! So for...</div>
-          </div>
-        </li>
-        <li className="collection-item row valign-wrapper z-depth-3">
-          <div className="col s2">
-            <img src="http://placehold.it/150x150" className="circle responsive-img"></img>
-          </div>
-          <div className="col s10">
-            <div className="from">John Smith (jsmith@gmail.com)</div>
-            <div className="subject">Good news everyone!</div>
-            <div className="preview-text">You are now worth more dead than alive! So for...</div>
-          </div>
-        </li>
-        <li className="collection-item row valign-wrapper unread">
-          <div className="col s2">
-            <img src="http://placehold.it/150x150" className="circle responsive-img"></img>
-          </div>
-          <div className="col s10">
-            <div className="from">John Smith (jsmith@gmail.com)</div>
-            <div className="subject">Good news everyone!</div>
-            <div className="preview-text">You are now worth more dead than alive! So for...</div>
-          </div>
-        </li>
-        <li className="collection-item row valign-wrapper unread">
-          <div className="col s2">
-            <img src="http://placehold.it/150x150" className="circle responsive-img"></img>
-          </div>
-          <div className="col s10">
-            <div className="from">John Smith (jsmith@gmail.com)</div>
-            <div className="subject">Good news everyone!</div>
-            <div className="preview-text">You are now worth more dead than alive! So for...</div>
-          </div>
-        </li>
+        { emails }
       </ul>
     )
   }
