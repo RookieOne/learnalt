@@ -22,7 +22,7 @@ class EmailsStore {
     foundEmail.unread = false
   }
   emailAdded(email) {
-    this.emails.push(email)
+    this.emails = [email].concat(this.emails)
   }
 }
 

@@ -15,10 +15,12 @@ module.exports = React.createClass({
       "open": this.props.email.open
     })
 
+    var imgSrc = "/images/" + this.props.email.image
+
     return (
       <li className={classes} onClick={this.selectEmail}>
         <div className="col s2">
-          <img src="http://placehold.it/150x150" className="circle responsive-img"></img>
+          <img src={imgSrc} className="circle responsive-img"></img>
         </div>
         <div className="col s10">
           <div className="from">{ this.props.email.from }</div>

@@ -6,6 +6,7 @@ var emails = [{
   unread: false,
   subject: "Good news everyone!",
   from: "Doctor Farnsworth",
+  image: "docfarnsworth.jpg",
   previewText: "You are now worth more dead than alive! So for...",
   open: false
 }, {
@@ -13,6 +14,7 @@ var emails = [{
   unread: false,
   subject: "Shut up and take my money!",
   from: "Fry Farnsworth (fry@planetexpress.com)",
+  image: "fry.jpg",
   previewText: "Take my money! I want it! Gimme gimme!",
   open: false
 }, {
@@ -20,6 +22,7 @@ var emails = [{
   unread: true,
   subject: "Good news everyone!",
   from: "Doctor Farnsworth (doc@planetexpress.com)",
+  image: "docfarnsworth.jpg",
   previewText: "You are now worth more dead than alive! So for...",
   open: false
 }, {
@@ -27,6 +30,7 @@ var emails = [{
   unread: true,
   subject: "Good news everyone!",
   from: "Doctor Farnsworth (doc@planetexpress.com)",
+  image: "docfarnsworth.jpg",
   previewText: "You are now worth more dead than alive! So for...",
   open: false
 }]
@@ -44,6 +48,7 @@ class EmailActions {
       from: "zoidberg@planetexpress.com",
       subject: "Woop woop",
       previewText: "Woop woop woop woop woop",
+      image: "zoidberg.jpg",
       unread: true
     }
     this.dispatch(newEmail)

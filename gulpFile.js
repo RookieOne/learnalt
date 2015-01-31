@@ -12,7 +12,7 @@ var to5ify = require("6to5ify")
 
 gulp.task("default", ["watch"])
 
-gulp.task("watch", ["clean", "move-files", "webserver", "bower", "css", "fonts"], function() {
+gulp.task("watch", ["clean", "move-files", "images", "webserver", "bower", "css", "fonts"], function() {
   gulp.watch("app/css/*.*", ["css"])
   gulp.watch("app/*.html", ["move-files"])
 })
@@ -25,6 +25,11 @@ gulp.task("clean", function() {
 gulp.task("move-files", function() {
   return gulp.src("app/*.html")
     .pipe(gulp.dest("build"))
+})
+
+gulp.task("images", function() {
+  return gulp.src("app/images/*.*")
+    .pipe(gulp.dest("build/images"))
 })
 
 gulp.task("bower", ["bower-css", "bower-js"])

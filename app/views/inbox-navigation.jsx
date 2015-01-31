@@ -17,18 +17,14 @@ module.exports = React.createClass({
     var unread = this.state.unread === 0
       ? ""
       : (
-        <a>
-          <span className="badge new">{ this.state.unread }</span>
-        </a>
+        <span className="badge new">{ this.state.unread }</span>
       )
-      
+
     return (
-      <ul className="collection">
+      <ul className="collection" id="inbox-navigation">
         <li className="collection-item">
-          <a href="#!">
-            <i className="fa fa-inbox"></i>
-            Inbox
-          </a>
+          <i className="fa fa-inbox"></i>
+          Inbox
           { unread }
         </li>
       </ul>

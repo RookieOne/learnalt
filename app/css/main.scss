@@ -15,8 +15,15 @@ nav {
   }
 }
 
+#inbox-navigation {
+  i {
+    margin-right: 6px;
+  }
+}
+
 #emails {
   li {
+    cursor: pointer;
     padding-left: 0px;
     border-left: 4px solid #fff;
     .from {
@@ -29,6 +36,9 @@ nav {
     .preview-text {
       color: color("grey", "darken-1");
       font-size: 0.8em;
+    }
+    img {
+      border: 1px solid color("grey", "lighten-1");
     }
   }
   li.unread {
