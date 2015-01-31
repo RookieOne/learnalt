@@ -5,6 +5,7 @@ var watchify = require('watchify')
 var source = require('vinyl-source-stream')
 var livereload = require('gulp-livereload')
 var clean = require("gulp-rm")
+var concat = require("gulp-concat")
 
 gulp.task("clean", function() {
   return gulp.src("build/**/*", { read: false })
@@ -14,6 +15,21 @@ gulp.task("clean", function() {
 gulp.task("move-files", ["clean"], function() {
   return gulp.src("app/*.html")
     .pipe(gulp.dest("build"))
+})
+
+gulp.task("bower-css", ["clean"], function() {
+  return gulp.src([
+    'app/bower/materialize/bin/materialize.css',
+    'app/bower/font-awesome/css/font-awesome.css'])
+    .pipe(concat('vendor.css'))
+    .pipe(gulp.dest("build/css"))
+})
+
+gulp.task("fonts", ["clean"], function() {
+  return gulp.src([
+    './app/bower/font-awesome/fonts/**.*',
+    './app/bower/materialize/font/**/*'])
+    .pipe(gulp.dest('build/font'))
 })
 
 gulp.task("build-app", ["clean"], function() {
@@ -39,4 +55,4 @@ gulp.task("webserver", ["clean", "move-files", "build-app"], function() {
     }))
 })
 
-gulp.task("default", ["move-files", "webserver"])
+gulp.task("default", ["move-files", "webserver", "bower-css", "fonts"])

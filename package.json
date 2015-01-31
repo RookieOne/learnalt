@@ -16,6 +16,7 @@
     "watchify": "^2.3.0",
     "vinyl-source-stream": "^1.0.0",
     "gulp-livereload": "^3.6.0",
-    "gulp-rm": "^1.0.0"
+    "gulp-rm": "^1.0.0",
+    "gulp-concat": "^2.4.3"
   }
 }
