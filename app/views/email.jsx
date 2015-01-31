@@ -4,16 +4,16 @@ var EmailStore = require("../stores/email-store.js")
 
 module.exports = React.createClass({
   mixins: [require("alt/mixins/ListenerMixin")],
-  getInitialState: function() {
+  getInitialState() {
     return EmailStore.getState()
   },
-  componentWillMount: function() {
+  componentWillMount() {
     this.listenTo(EmailStore, this.onChange)
   },
-  onChange: function() {
+  onChange() {
     this.setState(EmailStore.getState())
   },
-  render: function() {
+  render() {
     if (this.state.email === undefined) {
       return (<span></span>)
     }

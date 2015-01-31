@@ -4,16 +4,16 @@ var InboxStore = require("../stores/inbox-store.js")
 
 module.exports = React.createClass({
   mixins: [require("alt/mixins/ListenerMixin")],
-  getInitialState: function() {
+  getInitialState() {
     return InboxStore.getState()
   },
-  componentWillMount: function() {
+  componentWillMount() {
     this.listenTo(InboxStore, this.onChange)
   },
-  onChange: function() {
+  onChange() {
     this.setState(InboxStore.getState())
   },
-  render: function() {
+  render() {
     var unread = this.state.unread === 0
       ? ""
       : (

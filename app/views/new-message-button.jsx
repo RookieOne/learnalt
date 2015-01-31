@@ -2,12 +2,11 @@
 var React = require('react')
 var EmailActions = require("../actions/email-actions.js")
 
-
 module.exports = React.createClass({
-  addEmail: function() {
+  addEmail() {
     EmailActions.addEmail()
   },
-  render: function() {
+  render() {
     return (
       <a className="waves-effect waves-light btn" onClick={this.addEmail}>New Message</a>
     )

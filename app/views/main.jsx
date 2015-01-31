@@ -8,10 +8,10 @@ var Email = require("./email.jsx")
 var EmailActions = require("../actions/email-actions.js")
 
 module.exports = React.createClass({
-  componentWillMount: function() {
+  componentWillMount() {
     EmailActions.loadEmails()
   },
-  render: function() {
+  render() {
     return (
       <div>
         <Header />

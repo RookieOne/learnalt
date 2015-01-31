@@ -3,10 +3,10 @@ var React = require('react/addons')
 var EmailActions = require("../actions/email-actions.js")
 
 module.exports = React.createClass({
-  selectEmail: function() {
+  selectEmail() {
     EmailActions.selectEmail(this.props.email)
   },
-  render: function() {
+  render() {
     var classes = React.addons.classSet({
       'collection-item': true,
       "row": true,
@@ -15,7 +15,7 @@ module.exports = React.createClass({
       "open": this.props.email.open
     })
 
-    var imgSrc = "/images/" + this.props.email.image
+    var imgSrc = `/images/${this.props.email.image}`
 
     return (
       <li className={classes} onClick={this.selectEmail}>
