@@ -2,7 +2,7 @@
 var React = require('react')
 var _ = require("underscore")
 var EmailListItem = require("./email-list-item.jsx")
-var EmailsStore = require("../stores/emails.js")
+var EmailsStore = require("../stores/emails-store.js")
 var ListenerMixin = require("alt/mixins/ListenerMixin")
 
 module.exports = React.createClass({

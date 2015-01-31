@@ -1,4 +1,6 @@
 var alt = require("../application.js")
+var emailActions = require("../actions/email-actions.js")
+var _ = require("underscore")
 
 var emails = [{
   id: 1,
@@ -33,6 +35,14 @@ var emails = [{
 class EmailsStore {
   constructor() {
     this.emails = emails
+    this.bindAction(emailActions.selectEmail, this.emailSelected)
+  }
+  emailSelected(email) {
+    this.emails.forEach((email) => {
+      email.open = false
+    })
+    let foundEmail = _.findWhere(this.emails, { id: email.id })
+    foundEmail.open = true
   }
 }
 

@@ -1,7 +1,11 @@
 /** @jsx React.DOM */
 var React = require('react/addons')
+var EmailActions = require("../actions/email-actions.js")
 
 module.exports = React.createClass({
+  selectEmail: function() {
+    EmailActions.selectEmail(this.props.email)
+  },
   render: function() {
     var classes = React.addons.classSet({
       'collection-item': true,
@@ -12,7 +16,7 @@ module.exports = React.createClass({
     })
 
     return (
-      <li className={classes}>
+      <li className={classes} onClick={this.selectEmail}>
         <div className="col s2">
           <img src="http://placehold.it/150x150" className="circle responsive-img"></img>
         </div>
