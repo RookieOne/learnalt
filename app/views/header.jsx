@@ -1,7 +1,18 @@
 /** @jsx React.DOM */
 var React = require('react')
+var InboxStore = require("../stores/inbox-store.js")
 
 module.exports = React.createClass({
+  mixins: [require("alt/mixins/ListenerMixin")],
+  getInitialState: function() {
+    return InboxStore.getState()
+  },
+  componentWillMount: function() {
+    this.listenTo(InboxStore, this.onChange)
+  },
+  onChange: function() {
+    this.setState(InboxStore.getState())
+  },
   render: function() {
     return (
       <header>
@@ -12,7 +23,7 @@ module.exports = React.createClass({
             <ul id="nav-mobile" className="right side-nav">
               <li>
                 <a>
-                  <span>2 unread</span>
+                  <span>{ this.state.unread } unread</span>
                   <i className="fa fa-envelope"></i>
                 </a>
               </li>

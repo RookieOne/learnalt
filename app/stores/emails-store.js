@@ -1,5 +1,5 @@
 var alt = require("../application.js")
-var emailActions = require("../actions/email-actions.js")
+var EmailActions = require("../actions/email-actions.js")
 var _ = require("underscore")
 
 var emails = [{
@@ -35,7 +35,8 @@ var emails = [{
 class EmailsStore {
   constructor() {
     this.emails = emails
-    this.bindAction(emailActions.selectEmail, this.emailSelected)
+    this.bindAction(EmailActions.selectEmail, this.emailSelected)
+    this.bindAction(EmailActions.addEmail, this.emailAdded)
   }
   emailSelected(email) {
     this.emails.forEach((email) => {
@@ -43,6 +44,10 @@ class EmailsStore {
     })
     let foundEmail = _.findWhere(this.emails, { id: email.id })
     foundEmail.open = true
+    foundEmail.unread = false
+  }
+  emailAdded(email) {
+    this.emails.push(email)
   }
 }
 
