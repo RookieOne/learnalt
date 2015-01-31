@@ -4,13 +4,19 @@ var browserify = require("browserify")
 var watchify = require('watchify')
 var source = require('vinyl-source-stream')
 var livereload = require('gulp-livereload')
+var clean = require("gulp-rm")
 
-gulp.task("move-files", function() {
+gulp.task("clean", function() {
+  return gulp.src("build/**/*", { read: false })
+    .pipe(clean())
+})
+
+gulp.task("move-files", ["clean"], function() {
   return gulp.src("app/*.html")
     .pipe(gulp.dest("build"))
 })
 
-gulp.task("build-app", function() {
+gulp.task("build-app", ["clean"], function() {
   var bundle = function() {
     return bundler
       .bundle()
@@ -26,7 +32,7 @@ gulp.task("build-app", function() {
   return bundle()
 })
 
-gulp.task("webserver", ["move-files", "build-app"], function() {
+gulp.task("webserver", ["clean", "move-files", "build-app"], function() {
   return gulp.src("build")
     .pipe(webserver({
       livereload: true
