@@ -12,10 +12,10 @@ var emails = [{
 }, {
   id: 2,
   unread: false,
-  subject: "Good news everyone!",
-  from: "Doctor Farnsworth (doc@planetexpress.com)",
-  previewText: "You are now worth more dead than alive! So for...",
-  open: true
+  subject: "Shut up and take my money!",
+  from: "Fry Farnsworth (fry@planetexpress.com)",
+  previewText: "Take my money! I want it! Gimme gimme!",
+  open: false
 }, {
   id: 3,
   unread: true,
