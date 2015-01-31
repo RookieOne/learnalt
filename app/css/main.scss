@@ -1,0 +1,74 @@
+@import "../bower/materialize/sass/materialize.scss";
+
+html, body {
+  height: 100%;
+}
+footer {
+  vertical-align: bottom;
+}
+
+nav {
+  @extend .deep-orange;
+  @extend .darken-1;
+  .brand-logo {
+    margin-left: 10px;
+  }
+  .unread {
+    background: color("blue", "darken-1");
+    border-radius: 10px;
+    display: block;
+    padding: 0px;
+    margin: 0px;
+    // vertical-align: top;
+    // height: 30px;
+    // width: 30px;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+  }
+}
+
+#side-nav {
+  @extend .blue-grey;
+  @extend .darken-3;
+  color: #fff;
+  // background: red;
+}
+
+#email-search {
+  .input-field {
+    margin-top: 3px;
+  }
+}
+
+#emails {
+  li {
+    padding-left: 0px;
+    border-left: 4px solid #fff;
+    .from {
+      color: color("grey", "darken-1");
+      font-size: 0.8em;
+    }
+    .subject {
+      font-weight: bold;
+    }
+    .preview-text {
+      color: color("grey", "darken-1");
+      font-size: 0.8em;
+    }
+  }
+  li.unread {
+    border-left: 4px solid color("blue", "accent-1");
+  }
+}
+
+#email {
+  padding: 16px;
+  .from {
+    color: color("grey", "darken-1");
+  }
+  .subject {
+    font-weight: bold;
+    font-size: 1.3em;
+  }
+}

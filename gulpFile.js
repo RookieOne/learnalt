@@ -6,11 +6,12 @@ var source = require('vinyl-source-stream')
 var livereload = require('gulp-livereload')
 var clean = require("gulp-rm")
 var concat = require("gulp-concat")
-
+var sass = require("gulp-sass")
 
 gulp.task("default", ["watch"])
 
-gulp.task("watch", ["clean", "move-files", "webserver", "bower-css", "fonts"], function() {
+gulp.task("watch", ["clean", "move-files", "webserver", "bower", "css", "fonts"], function() {
+  gulp.watch("app/css/*.*", ["css"])
   gulp.watch("app/*.html", ["move-files"])
 })
 
@@ -24,6 +25,8 @@ gulp.task("move-files", function() {
     .pipe(gulp.dest("build"))
 })
 
+gulp.task("bower", ["bower-css", "bower-js"])
+
 gulp.task("bower-css", ["clean"], function() {
   return gulp.src([
     'app/bower/materialize/bin/materialize.css',
@@ -32,12 +35,28 @@ gulp.task("bower-css", ["clean"], function() {
     .pipe(gulp.dest("build/css"))
 })
 
+gulp.task("bower-js", ["clean"], function() {
+  return gulp.src([
+    'app/bower/jquery/dist/jquery.js',
+    'app/bower/materialize/bin/materialize.js'])
+    .pipe(concat('vendor.js'))
+    .pipe(gulp.dest("build/js"))
+})
+
 gulp.task("fonts", ["clean"], function() {
   return gulp.src([
     './app/bower/font-awesome/fonts/**.*',
     './app/bower/materialize/font/**/*'])
     .pipe(gulp.dest('build/font'))
 })
+
+gulp.task('css', function () {
+  return gulp.src('./app/css/*.scss')
+    .pipe(sass())
+    .pipe(concat("main.css"))
+    .pipe(gulp.dest('build/css'))
+    .pipe(livereload())
+});
 
 gulp.task("build-app", ["clean"], function() {
   var bundle = function() {
