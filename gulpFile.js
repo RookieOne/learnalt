@@ -7,12 +7,19 @@ var livereload = require('gulp-livereload')
 var clean = require("gulp-rm")
 var concat = require("gulp-concat")
 
+
+gulp.task("default", ["watch"])
+
+gulp.task("watch", ["clean", "move-files", "webserver", "bower-css", "fonts"], function() {
+  gulp.watch("app/*.html", ["move-files"])
+})
+
 gulp.task("clean", function() {
   return gulp.src("build/**/*", { read: false })
     .pipe(clean())
 })
 
-gulp.task("move-files", ["clean"], function() {
+gulp.task("move-files", function() {
   return gulp.src("app/*.html")
     .pipe(gulp.dest("build"))
 })
@@ -54,5 +61,3 @@ gulp.task("webserver", ["clean", "move-files", "build-app"], function() {
       livereload: true
     }))
 })
-
-gulp.task("default", ["move-files", "webserver", "bower-css", "fonts"])
