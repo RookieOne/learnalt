@@ -5,8 +5,12 @@ var InboxNavigation = require("./inbox-navigation.jsx")
 var NewMessageButton = require("./new-message-button.jsx")
 var Emails = require("./emails.jsx")
 var Email = require("./email.jsx")
+var EmailActions = require("../actions/email-actions.js")
 
 module.exports = React.createClass({
+  componentWillMount: function() {
+    EmailActions.loadEmails()
+  },
   render: function() {
     return (
       <div>

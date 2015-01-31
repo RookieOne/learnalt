@@ -14,6 +14,14 @@ module.exports = React.createClass({
     this.setState(InboxStore.getState())
   },
   render: function() {
+    var unread = this.state.unread === 0
+      ? ""
+      : (
+        <a>
+          <span className="badge new">{ this.state.unread }</span>
+        </a>
+      )
+      
     return (
       <ul className="collection">
         <li className="collection-item">
@@ -21,9 +29,7 @@ module.exports = React.createClass({
             <i className="fa fa-inbox"></i>
             Inbox
           </a>
-          <a>
-            <span className="badge new">{ this.state.unread }</span>
-          </a>
+          { unread }
         </li>
       </ul>
     )

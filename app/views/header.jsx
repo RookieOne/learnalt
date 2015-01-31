@@ -14,6 +14,12 @@ module.exports = React.createClass({
     this.setState(InboxStore.getState())
   },
   render: function() {
+    var unread = this.state.unread === 0
+      ? ""
+      : (
+        <span>{ this.state.unread } unread</span>
+      )
+
     return (
       <header>
         <nav>
@@ -23,7 +29,7 @@ module.exports = React.createClass({
             <ul id="nav-mobile" className="right side-nav">
               <li>
                 <a>
-                  <span>{ this.state.unread } unread</span>
+                  { unread }
                   <i className="fa fa-envelope"></i>
                 </a>
               </li>

@@ -5,9 +5,11 @@ var _ = require("underscore")
 
 class InboxStore {
   constructor() {
-    this.unread = 2
+    this.unread = 0
+
     this.bindAction(EmailActions.addEmail, this.emailChange)
     this.bindAction(EmailActions.selectEmail, this.emailChange)
+    this.bindAction(EmailActions.loadEmails, this.emailChange)
   }
   emailChange() {
     this.waitFor(EmailsStore.dispatchToken)
