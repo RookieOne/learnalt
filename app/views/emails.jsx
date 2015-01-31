@@ -2,42 +2,23 @@
 var React = require('react')
 var _ = require("underscore")
 var EmailListItem = require("./email-list-item.jsx")
-
-var emails = [{
-  unread: false,
-  subject: "Good news everyone!",
-  from: "Doctor Farnsworth",
-  previewText: "You are now worth more dead than alive! So for...",
-  open: false
-}, {
-  unread: false,
-  subject: "Good news everyone!",
-  from: "Doctor Farnsworth",
-  previewText: "You are now worth more dead than alive! So for...",
-  open: true
-}, {
-  unread: true,
-  subject: "Good news everyone!",
-  from: "Doctor Farnsworth",
-  previewText: "You are now worth more dead than alive! So for...",
-  open: false
-}, {
-  unread: true,
-  subject: "Good news everyone!",
-  from: "Doctor Farnsworth",
-  previewText: "You are now worth more dead than alive! So for...",
-  open: false
-}]
+var EmailsStore = require("../stores/emails.js")
+var ListenerMixin = require("alt/mixins/ListenerMixin")
 
 module.exports = React.createClass({
+  mixins: [ListenerMixin],
   getInitialState: function() {
-    return {
-      emails: emails
-    }
+    return EmailsStore.getState()
+  },
+  componentWillMount: function() {
+    this.listenTo(EmailsStore, this.onChange)
+  },
+  onChange: function() {
+    this.setState(EmailsStore.getState())
   },
   render: function() {
     var emails = _.map(this.state.emails, function(email) {
-      return (<EmailListItem email={email} />)
+      return (<EmailListItem key={email.id} email={email} />)
     })
 
     return (
