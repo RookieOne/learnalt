@@ -7,6 +7,7 @@ var livereload = require('gulp-livereload')
 var clean = require("gulp-rm")
 var concat = require("gulp-concat")
 var sass = require("gulp-sass")
+var reactify = require('reactify')
 
 gulp.task("default", ["watch"])
 
@@ -68,6 +69,7 @@ gulp.task("build-app", ["clean"], function() {
   }
 
   var bundler = browserify("./app/main.js", watchify.args)
+  bundler.transform(reactify)
   bundler.on("update", bundle)
   bundler = watchify(bundler)
 
