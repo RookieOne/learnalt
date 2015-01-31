@@ -3,9 +3,6 @@
 html, body {
   height: 100%;
 }
-footer {
-  vertical-align: bottom;
-}
 
 nav {
   @extend .deep-orange;
@@ -13,31 +10,8 @@ nav {
   .brand-logo {
     margin-left: 10px;
   }
-  .unread {
-    background: color("blue", "darken-1");
-    border-radius: 10px;
-    display: block;
-    padding: 0px;
-    margin: 0px;
-    // vertical-align: top;
-    // height: 30px;
-    // width: 30px;
-    position: absolute;
-    right: 0px;
-    top: 0px;
-  }
-}
-
-#side-nav {
-  @extend .blue-grey;
-  @extend .darken-3;
-  color: #fff;
-  // background: red;
-}
-
-#email-search {
-  .input-field {
-    margin-top: 3px;
+  span {
+    margin-right: 6px;
   }
 }
 
@@ -64,6 +38,7 @@ nav {
 
 #email {
   padding: 16px;
+  @extend .z-depth-3;
   .from {
     color: color("grey", "darken-1");
   }
