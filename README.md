@@ -5,8 +5,11 @@ I experimented with a few new libraries & techniques with this project.
 ### Running the app
 
 ```
+npm install
 gulp
 ```
+
+Open your web browser to `localhost:8000`
 
 That is it.
 
